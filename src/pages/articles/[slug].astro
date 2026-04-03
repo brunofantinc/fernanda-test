@@ -15,14 +15,15 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 const { title, date, image } = entry.data;
 const formattedDate = new Date(date).toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" });
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <Base title={title}>
   <article class="max-w-4xl mx-auto px-6 py-20">
     <Breadcrumbs
       items={[
-        { label: "Início", href: "/" },
-        { label: "Artigos", href: "/articles" },
+        { label: "Início", href: base },
+        { label: "Artigos", href: `${base}articles` },
         { label: title },
       ]}
     />
@@ -46,7 +47,7 @@ const formattedDate = new Date(date).toLocaleDateString("pt-BR", { day: "numeric
     </div>
 
     <a
-      href="/articles"
+      href={`${base}articles`}
       class="inline-block my-8 px-6 py-2 bg-[#0B2545] text-white rounded-full hover:bg-[#F9C74F] hover:text-[#0B2545] transition"
     >
       ← Voltar aos Artigos

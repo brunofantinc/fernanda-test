@@ -2,11 +2,12 @@
 const { article } = Astro.props;
 const { title, description, image } = article.data;
 const slug = article.slug;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <article class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition flex flex-col">
   {image && (
-    <a href={`/articles/${slug}`} class="block">
+    <a href={`${base}articles/${slug}`} class="block">
       <img src={image} alt={title} class="w-full h-56 object-cover" />
     </a>
   )}
@@ -14,7 +15,7 @@ const slug = article.slug;
   <div class="p-6 flex flex-col justify-between flex-1">
     <div>
       <h2 class="text-xl font-bold text-[#0B2545] mb-2">
-        <a href={`/articles/${slug}`} class="hover:underline">
+        <a href={`${base}articles/${slug}`} class="hover:underline">
           {title}
         </a>
       </h2>
@@ -22,7 +23,7 @@ const slug = article.slug;
     </div>
 
     <a
-      href={`/articles/${slug}`}
+      href={`${base}articles/${slug}`}
       class="text-[#0B2545] font-semibold hover:text-[#F9C74F] transition"
     >
       Leia mais →

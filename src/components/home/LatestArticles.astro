@@ -8,6 +8,8 @@ const latestArticles = allArticles
 
 const formatDate = (dateStr: string) =>
   new Date(dateStr).toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" });
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <section class="py-16 bg-white">
@@ -19,7 +21,7 @@ const formatDate = (dateStr: string) =>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
       {latestArticles.map((article) => (
         <a
-          href={`/articles/${article.slug}`}
+          href={`${base}articles/${article.slug}`}
           class="group bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col"
         >
           <p class="text-xs text-gray-400 mb-2 uppercase tracking-wider">{formatDate(article.data.date)}</p>
@@ -35,7 +37,7 @@ const formatDate = (dateStr: string) =>
     </div>
 
     <a
-      href="/articles"
+      href={`${base}articles`}
       class="inline-block mt-10 px-8 py-3 bg-[#0B2545] text-white rounded-full font-semibold hover:bg-[#F9C74F] hover:text-[#0B2545] transition"
     >
       Ver todos os artigos
