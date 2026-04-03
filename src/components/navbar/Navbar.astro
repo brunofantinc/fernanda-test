@@ -1,8 +1,12 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
 <nav class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
   <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-3">
-      <img src="/justicia.png" alt="BFC" class="h-10 md:h-12" />
+    <a href={base} class="flex items-center gap-3">
+      <img src={`${base}justicia.png`} alt="BFC" class="h-10 md:h-12" />
       <div class="flex flex-col leading-tight">
         <span class="font-cinzel text-xl font-bold text-[#0B2545] tracking-widest">BFC</span>
         <span class="font-cormorant text-xs text-[#0B2545] tracking-wider uppercase">Advocacia e Soluções Jurídicas</span>
@@ -13,7 +17,7 @@
     <ul class="hidden md:flex space-x-8">
       <li>
         <a
-          href="/"
+          href={base}
           class="relative group text-gray-700 font-bold transition-colors duration-300 hover:text-[#1D3A75]"
         >
           Início
@@ -24,7 +28,7 @@
       </li>
       <li>
         <a
-          href="/articles"
+          href={`${base}articles`}
           class="relative group text-gray-700 font-bold transition-colors duration-300 hover:text-[#1D3A75]"
         >
           Artigos
@@ -104,14 +108,14 @@
         <ul class="flex flex-col space-y-6 mt-4 ml-6">
           <li>
             <a
-              href="/"
+              href={base}
               class="text-gray-700 text-lg font-bold hover:text-[#1D3A75]"
               >Início</a
             >
           </li>
           <li>
             <a
-              href="/articles"
+              href={`${base}articles`}
               class="text-gray-700 text-lg font-bold hover:text-[#1D3A75]"
               >Artigos</a
             >
