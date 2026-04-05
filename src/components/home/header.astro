@@ -1,10 +1,9 @@
 ---
-import headerImg from "../../assets/img/headerImg.jpg";
 import aboutHeader from "../../assets/img/aboutheader.jpg";
 ---
 
 <header
-  id="hero-header"
+  style={`background-image: url(${aboutHeader.src})`}
   class="relative h-screen bg-cover bg-center"
 >
   <div class="absolute inset-0 bg-black/70"></div>
@@ -17,9 +16,3 @@ import aboutHeader from "../../assets/img/aboutheader.jpg";
     </p>
   </main>
 </header>
-
-<script define:vars={{ img1: headerImg.src, img2: aboutHeader.src }}>
-  const images = [img1, img2];
-  const chosen = images[Math.floor(Math.random() * images.length)];
-  document.getElementById("hero-header").style.backgroundImage = `url(${chosen})`;
-</script>

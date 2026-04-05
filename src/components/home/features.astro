@@ -1,22 +1,104 @@
 ---
-import FeatureCard from "./featureCard.astro";
 import { features } from "../../Data/features.js";
+const total = features.length;
 ---
 
 <section class="py-16 bg-neutral">
   <div class="max-w-7xl mx-auto px-6 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold text-[#313d25] mb-8">
-      Nossos Serviços
+    <h2 class="text-3xl font-bold uppercase text-[#313d25] mb-8">
+      Áreas de Atuação
     </h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {
-        features.map((feature) => (
-          <FeatureCard
-            title={feature.title}
-            description={feature.description}
-          />
-        ))
-      }
+
+    <div class="relative overflow-hidden" id="carousel-outer">
+      <div id="track" class="flex" style="gap: 24px">
+        {features.map((feature) => (
+          <div class="slide-item flex-shrink-0">
+            <div class="p-12 bg-gray-50 rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition flex flex-col justify-center items-center text-center h-full">
+              <h3 class="text-2xl text-[#313d25] font-semibold mb-4">{feature.title}</h3>
+              <p class="text-gray-600 text-lg max-w-xl">{feature.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <button
+        id="prev-slide"
+        class="absolute left-3 top-1/2 -translate-y-1/2 btn btn-circle bg-[#d4dfc8] border-none text-[#313d25] hover:bg-[#c2d0b4] z-10"
+      >
+        ❮
+      </button>
+
+      <button
+        id="next-slide"
+        class="absolute right-3 top-1/2 -translate-y-1/2 btn btn-circle bg-[#d4dfc8] border-none text-[#313d25] hover:bg-[#c2d0b4] z-10"
+      >
+        ❯
+      </button>
     </div>
   </div>
 </section>
+
+<script define:vars={{ total }}>
+  const outer   = document.getElementById('carousel-outer');
+  const track   = document.getElementById('track');
+  const GAP     = 24;
+  const RATIO   = 0.78; // active card takes 78% of container width, leaving edges visible
+
+  // Clone first and last slides for seamless infinite loop
+  const origItems = [...track.children];
+  track.appendChild(origItems[0].cloneNode(true));
+  track.insertBefore(origItems[total - 1].cloneNode(true), origItems[0]);
+  // Layout: [clone-last, slide0, slide1, slide2, clone-first]
+
+  let current     = 1; // start at real first slide
+  let transitioning = false;
+
+  function cardWidth()   { return outer.offsetWidth * RATIO; }
+  function stepSize()    { return cardWidth() + GAP; }
+  function offsetFor(i)  { return -i * stepSize() + (outer.offsetWidth - cardWidth()) / 2; }
+
+  function setWidths() {
+    const w = cardWidth();
+    [...track.children].forEach(c => { c.style.width = w + 'px'; });
+  }
+
+  function moveTo(i, animate = true) {
+    current = i;
+    track.style.transition = animate ? 'transform 0.5s ease' : 'none';
+    track.style.transform  = `translateX(${offsetFor(i)}px)`;
+    if (!animate) transitioning = false;
+  }
+
+  track.addEventListener('transitionend', () => {
+    transitioning = false;
+    // Snap from clone to real slide without animation
+    if (current === 0)         moveTo(total, false);
+    else if (current === total + 1) moveTo(1, false);
+  });
+
+  setWidths();
+  moveTo(1, false);
+
+  document.getElementById('prev-slide').addEventListener('click', () => {
+    if (transitioning) return;
+    transitioning = true;
+    moveTo(current - 1);
+  });
+
+  document.getElementById('next-slide').addEventListener('click', () => {
+    if (transitioning) return;
+    transitioning = true;
+    moveTo(current + 1);
+  });
+
+  setInterval(() => {
+    if (transitioning) return;
+    transitioning = true;
+    moveTo(current + 1);
+  }, 3000);
+
+  window.addEventListener('resize', () => {
+    setWidths();
+    moveTo(current, false);
+  });
+</script>

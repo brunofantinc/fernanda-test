@@ -22,21 +22,16 @@ const currentArticles = sortedArticles.slice(start, end);
 ---
 
 <Base title="Artigos" meta_title="Artigos | FFC">
-  <section class="px-6 py-20 max-w-7xl mx-auto">
-    <Breadcrumbs
-      items={[
-        { label: "Início", href: "/" },
-        { label: "Artigos", href: "/articles" },
-      ]}
-    />
-
-    <h1 class="text-center text-[#313d25] text-3xl md:text-4xl font-extrabold uppercase tracking-[3px] mb-12">
+  <section class="px-6 pt-32 pb-20 max-w-7xl mx-auto">
+<h1 class="text-center text-[#313d25] text-4xl font-extrabold uppercase tracking-[3px] mb-12">
       Artigos
     </h1>
 
-    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+    <div class="flex flex-wrap justify-center gap-10">
       {currentArticles.map((article) => (
-        <BlogCard article={article} />
+        <div class="w-full md:w-[30%]">
+          <BlogCard article={article} />
+        </div>
       ))}
     </div>
 

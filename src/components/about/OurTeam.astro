@@ -1,11 +1,16 @@
+---
+import foto from "../../assets/img/foto.jpeg";
+import foto2 from "../../assets/img/foto2.jpeg";
+---
+
 <section
   class="px-6 py-16 flex flex-col md:flex-row items-center gap-12 max-w-7xl mx-auto"
 >
   <!-- Left Image -->
   <div class="w-full md:w-1/2">
     <img
-      src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.1.0&auto=format&fit=crop&w=800&q=60"
-      alt="Dra. Fernanda Costa"
+      id="fernanda-photo"
+      alt="Fernanda Fantin da Costa"
       class="w-full h-[300px] md:h-[350px] object-cover rounded-xl shadow-md"
     />
   </div>
@@ -15,9 +20,9 @@
     class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left"
   >
     <h2
-      class="text-[#313d25] text-2xl md:text-3xl font-extrabold uppercase tracking-[4px] mb-2"
+      class="text-[#313d25] text-3xl font-extrabold uppercase tracking-[4px] mb-2"
     >
-      Dra. Fernanda Costa
+      Fernanda Fantin da Costa
     </h2>
 
     <p class="text-gray-500 font-semibold text-base mb-4">
@@ -26,7 +31,7 @@
 
     <p class="text-gray-600 text-base md:text-lg leading-7">
       Com mais de 10 anos de experiência nas áreas de Direito Civil, de Família
-      e Empresarial, a Dra. Fernanda Costa conduz cada caso com dedicação,
+      e Empresarial, a Fernanda Fantin da Costa conduz cada caso com dedicação,
       ética e profundo conhecimento técnico.
       <br /><br />
       Fundadora da <span class="font-bold text-[#0B2545]">FFC Advocacia</span>,
@@ -36,3 +41,8 @@
     </p>
   </div>
 </section>
+
+<script define:vars={{ src1: foto.src, src2: foto2.src }}>
+  const photos = [src1, src2];
+  document.getElementById('fernanda-photo').src = photos[Math.floor(Math.random() * photos.length)];
+</script>
