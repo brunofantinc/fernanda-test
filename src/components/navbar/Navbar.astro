@@ -16,24 +16,38 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     <ul class="hidden md:flex space-x-8">
       <li>
         <a
-          href={base}
+          href={`${base}#home`}
           class="relative group text-gray-700 font-bold transition-colors duration-300 hover:text-[#1D3A75]"
         >
-          Início
-          <span
-            class="absolute left-0 -bottom-2 w-0 h-0.5 bg-[#1D3A75] transition-all duration-300 group-hover:w-full"
-          ></span>
+          Home
+          <span class="absolute left-0 -bottom-2 w-0 h-0.5 bg-[#1D3A75] transition-all duration-300 group-hover:w-full"></span>
         </a>
       </li>
       <li>
         <a
-          href={`${base}articles`}
+          href={`${base}#atuacao`}
+          class="relative group text-gray-700 font-bold transition-colors duration-300 hover:text-[#1D3A75]"
+        >
+          Atuação
+          <span class="absolute left-0 -bottom-2 w-0 h-0.5 bg-[#1D3A75] transition-all duration-300 group-hover:w-full"></span>
+        </a>
+      </li>
+      <li>
+        <a
+          href={`${base}#sobre`}
+          class="relative group text-gray-700 font-bold transition-colors duration-300 hover:text-[#1D3A75]"
+        >
+          Sobre
+          <span class="absolute left-0 -bottom-2 w-0 h-0.5 bg-[#1D3A75] transition-all duration-300 group-hover:w-full"></span>
+        </a>
+      </li>
+      <li>
+        <a
+          href={`${base}#artigos`}
           class="relative group text-gray-700 font-bold transition-colors duration-300 hover:text-[#1D3A75]"
         >
           Artigos
-          <span
-            class="absolute left-0 -bottom-2 w-0 h-0.5 bg-[#1D3A75] transition-all duration-300 group-hover:w-full"
-          ></span>
+          <span class="absolute left-0 -bottom-2 w-0 h-0.5 bg-[#1D3A75] transition-all duration-300 group-hover:w-full"></span>
         </a>
       </li>
     </ul>
@@ -106,18 +120,16 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
         <ul class="flex flex-col space-y-6 mt-4 ml-6">
           <li>
-            <a
-              href={base}
-              class="text-gray-700 text-lg font-bold hover:text-[#1D3A75]"
-              >Início</a
-            >
+            <a href={`${base}#home`} class="text-gray-700 text-lg font-bold hover:text-[#1D3A75]">Home</a>
           </li>
           <li>
-            <a
-              href={`${base}articles`}
-              class="text-gray-700 text-lg font-bold hover:text-[#1D3A75]"
-              >Artigos</a
-            >
+            <a href={`${base}#atuacao`} class="text-gray-700 text-lg font-bold hover:text-[#1D3A75]">Atuação</a>
+          </li>
+          <li>
+            <a href={`${base}#sobre`} class="text-gray-700 text-lg font-bold hover:text-[#1D3A75]">Sobre</a>
+          </li>
+          <li>
+            <a href={`${base}#artigos`} class="text-gray-700 text-lg font-bold hover:text-[#1D3A75]">Artigos</a>
           </li>
         </ul>
       </div>
