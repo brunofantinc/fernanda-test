@@ -27,11 +27,9 @@ const currentArticles = sortedArticles.slice(start, end);
       Artigos
     </h1>
 
-    <div class="flex flex-wrap justify-start gap-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
       {currentArticles.map((article) => (
-        <div class="w-full md:w-[30%] h-full">
-          <BlogCard article={article} />
-        </div>
+        <BlogCard article={article} />
       ))}
     </div>
 
