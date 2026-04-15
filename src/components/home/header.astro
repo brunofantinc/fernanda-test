@@ -2,14 +2,10 @@
 import aboutHeader from "../../assets/img/aboutheader.jpg";
 import biblioteca1 from "../../assets/img/biblioteca_publica_do_parana_-_creditos_gabriel_rosa.jpg";
 import biblioteca2 from "../../assets/img/biblioteca_publica_do_parana_creditos_jose_fernando_ogura_aen_2.jpg";
-
-const images = [aboutHeader.src, biblioteca1.src, biblioteca2.src];
-const randomImage = images[Math.floor(Math.random() * images.length)];
 ---
 
 <header
   id="home"
-  style={`background-image: url(${randomImage})`}
   class="relative h-screen bg-cover bg-center"
 >
   <div class="absolute inset-0 bg-black/70"></div>
@@ -22,3 +18,9 @@ const randomImage = images[Math.floor(Math.random() * images.length)];
     </p>
   </main>
 </header>
+
+<script define:vars={{ images: [aboutHeader.src, biblioteca1.src, biblioteca2.src] }}>
+  const header = document.getElementById("home");
+  const randomImage = images[Math.floor(Math.random() * images.length)];
+  header.style.backgroundImage = `url(${randomImage})`;
+</script>
