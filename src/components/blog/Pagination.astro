@@ -2,11 +2,15 @@
 interface Props {
   currentPage: number;
   totalPages: number;
-  baseUrl: string;
+  paginationBase: string;
 }
 
-const { currentPage, totalPages, baseUrl } = Astro.props;
+const { currentPage, totalPages, paginationBase } = Astro.props;
 const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+function pageUrl(page: number): string {
+  return page === 1 ? paginationBase : `${paginationBase}/pagina/${page}`;
+}
 ---
 
 <div class="flex justify-center mt-12 gap-2">
@@ -14,13 +18,13 @@ const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
     {
       pages.map((page) => (
         <a
-          href={`${baseUrl}?page=${page}`}
+          href={pageUrl(page)}
           class={`join-item font-bold p-2 px-4 rounded ${
             page === currentPage
               ? "bg-[#0B2545] text-white hover:bg-[#06172c]"
               : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-100"
           }`}
-          aria-label={`Page ${page}`}
+          aria-label={`Página ${page}`}
         >
           {page}
         </a>

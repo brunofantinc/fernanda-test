@@ -10,15 +10,12 @@ const sortedArticles = allArticles.sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 
-const url = new URL(Astro.request.url);
-const currentPage = parseInt(url.searchParams.get("page") || "1", 10);
-
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const currentPage = 1;
 const postsPerPage = 6;
 const totalPages = Math.ceil(sortedArticles.length / postsPerPage);
-
-const start = (currentPage - 1) * postsPerPage;
-const end = start + postsPerPage;
-const currentArticles = sortedArticles.slice(start, end);
+const currentArticles = sortedArticles.slice(0, postsPerPage);
+const paginationBase = `${base}artigos`;
 ---
 
 <Base title="Artigos" meta_title="Artigos | FFC">
@@ -33,6 +30,6 @@ const currentArticles = sortedArticles.slice(start, end);
       ))}
     </div>
 
-    <Pagination currentPage={currentPage} totalPages={totalPages} baseUrl="/articles" />
+    <Pagination currentPage={currentPage} totalPages={totalPages} paginationBase={paginationBase} />
   </section>
 </Base>

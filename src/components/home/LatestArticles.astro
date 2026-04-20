@@ -22,7 +22,7 @@ const truncate = (str: string, max: number) => str.length > max ? str.slice(0, m
     <div class="flex flex-wrap justify-center gap-8 text-left">
       {latestArticles.map((article) => (
         <a
-          href={`${base}articles/${article.slug}`}
+          href={`${base}artigos/${article.slug}`}
           class="group bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col w-full md:w-[30%]"
         >
           <p class="text-xs text-gray-400 mb-2 uppercase tracking-wider">{formatDate(article.data.date)}</p>
@@ -38,7 +38,7 @@ const truncate = (str: string, max: number) => str.length > max ? str.slice(0, m
     </div>
 
     <a
-      href={`${base}articles`}
+      href={`${base}artigos`}
       class="inline-block mt-10 px-8 py-3 bg-[#0B2545] text-white rounded-full font-semibold hover:bg-[#F9C74F] hover:text-[#0B2545] transition"
     >
       Ver todos os artigos
