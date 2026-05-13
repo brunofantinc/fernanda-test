@@ -1,6 +1,7 @@
 ---
-import foto from "../../assets/img/foto.jpeg";
-import foto2 from "../../assets/img/foto2.jpeg";
+import { Image } from "astro:assets";
+import photo from "../../assets/img/photo.jpg";
+import photo2 from "../../assets/img/photo_2.jpg";
 ---
 
 <section
@@ -9,10 +10,21 @@ import foto2 from "../../assets/img/foto2.jpeg";
 >
   <!-- Left Image -->
   <div class="w-full md:w-1/2">
-    <img
-      id="fernanda-photo"
+    <Image
+      id="fernanda-photo-1"
+      src={photo}
       alt="Fernanda Fantin da Costa"
+      width={1280}
+      quality={90}
       class="w-full h-[420px] md:h-[480px] object-cover object-top rounded-xl shadow-md"
+    />
+    <Image
+      id="fernanda-photo-2"
+      src={photo2}
+      alt="Fernanda Fantin da Costa"
+      width={1280}
+      quality={90}
+      class="w-full h-[420px] md:h-[480px] object-cover object-top rounded-xl shadow-md hidden"
     />
   </div>
 
@@ -39,7 +51,9 @@ import foto2 from "../../assets/img/foto2.jpeg";
   </div>
 </section>
 
-<script define:vars={{ src1: foto.src, src2: foto2.src }}>
-  const photos = [src1, src2];
-  document.getElementById('fernanda-photo').src = photos[Math.floor(Math.random() * photos.length)];
+<script>
+  if (Math.random() < 0.5) {
+    document.getElementById('fernanda-photo-1')?.classList.add('hidden');
+    document.getElementById('fernanda-photo-2')?.classList.remove('hidden');
+  }
 </script>
