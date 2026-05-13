@@ -14,16 +14,18 @@ import photo2 from "../../assets/img/photo_2.jpg";
       id="fernanda-photo-1"
       src={photo}
       alt="Fernanda Fantin da Costa"
-      width={1280}
-      quality={90}
+      widths={[480, 800, 1280]}
+      sizes="(max-width: 768px) 100vw, 50vw"
+      quality={100}
       class="w-full h-[420px] md:h-[480px] object-cover object-top rounded-xl shadow-md"
     />
     <Image
       id="fernanda-photo-2"
       src={photo2}
       alt="Fernanda Fantin da Costa"
-      width={1280}
-      quality={90}
+      widths={[480, 800, 1280]}
+      sizes="(max-width: 768px) 100vw, 50vw"
+      quality={100}
       class="w-full h-[420px] md:h-[480px] object-cover object-top rounded-xl shadow-md hidden"
     />
   </div>
