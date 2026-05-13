@@ -1,5 +1,5 @@
 ---
-title: "A chance de perder um imóvel comprado: Bem Público doado com encargo e sua sorte negocial posterior; os seus impeditivos para doação, compra e venda"
+title: "A chance de perder um imóvel: Bem Público doado com encargo e sua sorte negocial posterior; os seus impeditivos para doação, compra e venda"
 description: "Imóveis doados pelo poder público com encargo podem ser retomados pelo Estado. Entenda os riscos jurídicos antes de comprar, vender ou investir nesses bens."
 date: "May 11, 2026"
 author: "Fernanda Fantin da Costa. Advogada, especialista em Direito Privado pela Escola da Magistratura Federal do Paraná e Controladoria pela Universidade Federal do Paraná. Membro e pesquisadora do Grupo de Estudos em Processo Civil da Pontifícia Universidade Católica do Paraná (GEDPC - PUCPR)."
